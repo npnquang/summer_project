@@ -1,0 +1,45 @@
+# Comments are provided throughout this file to help you get started.
+# If you need more help, visit the Docker Compose reference guide at
+# https://docs.docker.com/go/compose-spec-reference/
+
+# Here the instructions define your application as a service called "server".
+# This service is built from the Dockerfile in the current directory.
+# You can add other services your application may depend on here, such as a
+# database or a cache. For examples, see the Awesome Compose repository:
+# https://github.com/docker/awesome-compose
+services:
+  server:
+    build:
+      context: .
+    container_name: server
+    environment:
+      - NODE_ENV=production
+      - GOOGLE_CLOUD_PROJECT=fabled-archive-433702-a3
+      - GOOGLE_API_KEY=AIzaSyA1e5URQysuZwkp0D4Xx-3IeqIUAf5C8gE
+      - GOOGLE_APPLICATION_CREDENTIALS=/home/james/summer_project/Assignment-3/backend/fabled-archive-433702-a3-39c4668dd44c.json
+      - MONGO_URI=mongodb://mongo:27017/FIT2095_A2
+    ports:
+      - 8080:8080
+    depends_on:
+      mongo:
+        condition: service_healthy
+
+  mongo:
+    image: mongo:latest
+    container_name: mongo
+    environment:
+      - MONGO_INITDB_DATABASE=FIT2095_A2
+    volumes:
+      - mongo-data:/data/db
+    ports:
+      - "27018:27017"
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s     # Run health check every 10 seconds
+      timeout: 5s       # Consider it failed if it takes more than 5 seconds
+      retries: 5        # Try up to 5 times before marking as unhealthy
+      start_period: 60s # Wait 60 seconds before starting health checks
+
+volumes:
+  mongo-data:
+

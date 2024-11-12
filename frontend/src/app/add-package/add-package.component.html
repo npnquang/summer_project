@@ -1,0 +1,37 @@
+<div class="d-flex flex-row justify-content-center">
+  <div>
+    <h1>Add new package</h1>
+    <div>
+      <label for="title" class="form-label">Title:</label>
+      <input [(ngModel)]="package.title" type="text" class="form-control mb-3" id="title" name="title" required>
+
+      <label for="weight" class="form-label">Weight:</label>
+      <input [(ngModel)]="package.weight" type="number" step="0.001" class="form-control mb-3" id="weight" name="weight" required>
+      <br>
+
+      <label for="destination" class="form-label" >Destination:</label>
+      <input [(ngModel)]="package.destination" type="text" class="form-control mb-3" id="destination" name="destination" required>
+      <br>
+
+      <label for="description" class="form-label" >Description:</label>
+      <input [(ngModel)]="package.description" type="text" class="form-control mb-3" id="description" name="description">
+      <br>
+
+      <div class="form-check mb-3">
+        <label for="allocated" class="form-check-label" >Allocated:</label>
+        <input [(ngModel)]="package.isAllocated" type="checkbox" class="form-check-input" id="allocated" name="isAllocated">
+      </div>
+      
+      <label for="driverId" class="form-label" >Driver ID:</label>
+      <select [(ngModel)]="package.driverId._id" id="driverId" class="form-select" name="driverId" required>
+        <option value="" disabled selected>Select an option</option>
+        @for(driver of drivers; track driver; let i = $index) {
+          <option value="{{driver._id}}">{{ driver.name }}, {{ driver._id }}</option>
+        }
+      </select>
+      <br>
+
+      <button (click)="addPackage()" class="btn btn-success">Add new package</button>
+    </div>
+  </div>
+</div>

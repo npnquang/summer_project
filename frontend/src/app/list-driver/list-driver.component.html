@@ -1,0 +1,49 @@
+@if (drivers.length === 0) {
+  <div class="text-center">
+    <h3>No drivers available</h3>
+  </div>
+}
+
+@else {
+  <div>
+    <h1>Driver Profiles</h1>
+    <table class="table table-responsive table-bordered border-success table-striped table-dark">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Driver ID</th>
+          <th>Name</th>
+          <th>Department</th>
+          <th>License</th>
+          <th>Status</th>
+          <th>Join Date</th>
+          <th>Delete</th>
+          <th>Packages</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (driver of drivers; track driver; let i = $index) {
+          <tr id="driver._id">
+            <td>{{ driver._id }}</td>
+            <td>{{ driver.driverId }}</td>
+            <td>{{ driver.name | uppercase }}</td>
+            <td>{{ driver.department | titlecase}}</td>
+            <td>{{ driver.licence }}</td>
+            <td>{{ driver.isActive ? "Active" : "Inactive" }}</td>
+            <td>{{ driver.createdAt | date }}</td>
+            <td>
+              <button type="button" class="btn btn-danger btn-sm" (click)="deleteButton(driver._id)">Delete</button>
+            </td>
+            <td>
+              <button type="button" class="btn btn-primary btn-sm" (click)="toggleShow(i)">Show</button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+
+  @if (show) {
+    <app-package-child (closeShow)="close($event)" [packages]="packages"></app-package-child>
+  }
+}

@@ -1,0 +1,83 @@
+@if (packages.length === 0) {
+  <div class="text-center">
+    <h3>No packages available</h3>
+  </div>
+}
+
+@else {
+  <div>
+    <div class="d-flex justify-content-between">
+      <h1>Translate package description</h1>
+      <div class="d-flex justify-content-between">
+        <label for="language" class="px-2 mt-2 mb-2"><h5>Select a language:</h5></label>
+        <select [(ngModel)]="currentTargetLanguage" id="language" class="w-auto form-select mb-3 ml-3" name="language" required>
+          <option value=0>Spanish</option>
+          <option value=1>Korea</option>
+          <option value=2>Chinese</option>
+        </select>
+      </div>
+    </div>  
+
+
+    <table class="table table-responsive table-bordered border-success table-striped table-dark">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Package ID</th>
+          <th>Title</th>
+          <th>Weight</th>
+          <th>Destination</th>
+          <th>Driver ID</th>
+          <th>Description</th>
+          <th>Allocated</th>
+          <th>Date Created</th>
+          <th>Translate</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (package of packages; track package; let i = $index) {
+          <tr id="package._id">
+            <td>{{ package._id }}</td>
+            <td>{{ package.packageId }}</td>
+            <td>{{ package.title | uppercase }}</td>
+            <td>{{ package.weight * 1000 | number: '.2-2' }}g</td>
+            <td>{{ package.destination }}</td>
+            <td>{{ package.driverId._id }}</td>
+            <td>{{ package.description }}</td>
+            <td>{{ package.isAllocated ? 'True' : 'False' }}</td>
+            <td>{{ package.createdAt | date}}</td>
+            <td>
+              <button type="button" class="btn btn-primary btn-sm" (click)="translate(i, package.description)">T</button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+    
+    @if (translations.length > 0) {
+      <div class="d-flex justify-content-start mt-3 mb-3">
+        <h3>Translations: </h3>
+        <button type="button" class="btn btn-danger btn-sm align-self-start ms-3" (click)="close()">x</button>
+      </div>
+
+      <table class="table table-responsive table-bordered border-success table-striped table-dark">
+        <thead>
+          <tr>
+            <th>Text</th>
+            <th>Target Language</th>
+            <th>Translation</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (translation of translations; track translation; let i = $index) {
+            <tr>
+              <td>{{ translation.text }}</td>
+              <td>{{ translation.language }}</td>
+              <td>{{ translation.translation }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    }
+  </div>
+}

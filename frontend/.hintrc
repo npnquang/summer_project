@@ -1,0 +1,15 @@
+{
+  "extends": [
+    "development"
+  ],
+  "browserslist": [
+    "defaults",
+    "not ie 11",
+    "not and_ff <= 127",
+    "not firefox <= 130",
+    "not opera <= 111"
+  ],
+  "hints": {
+    "apple-touch-icons": "off"
+  }
+}

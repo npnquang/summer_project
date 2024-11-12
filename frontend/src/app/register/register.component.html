@@ -1,0 +1,20 @@
+<div class="d-flex flex-row justify-content-center">
+  <div class="w-30">
+    <h1>Sign up</h1>
+    <div>
+      <label for="username" class="form-label">User name:</label>
+      <input [(ngModel)]="registerInfo.username" type="text" class="form-control mb-3" id="username" name="username" required>
+      <br>
+
+      <label for="password" class="form-label">Password:</label>
+      <input [(ngModel)]="registerInfo.password" type="password" class="form-control mb-3" id="password" name="password" required>
+      <br>
+
+      <label for="passwordCheck" class="form-label">Enter password again:</label>
+      <input [(ngModel)]="registerInfo.passwordCheck" type="password" class="form-control mb-3" id="passwordCheck" name="passwordCheck" required>
+      <br>
+  
+      <button (click)="register()" type="button" class="btn btn-success">Register</button>
+    </div>
+  </div>
+</div>

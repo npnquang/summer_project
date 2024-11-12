@@ -1,0 +1,31 @@
+
+<div class="d-flex justify-content-start mt-3 mb-3">
+  <h3>Driver</h3>
+  <button type="button" class="btn btn-danger btn-sm align-self-start ms-3" (click)="close()" >x</button>
+</div>
+<table class="table table-responsive table-bordered border-success table-striped table-dark">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Driver ID</th>
+      <th>Name</th>
+      <th>Department</th>
+      <th>License</th>
+      <th>Status</th>
+      <th>Join Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (driver of [driver]; track driver; let i = $index) {
+      <tr id="driver._id">
+        <td>{{ driver._id }}</td>
+        <td>{{ driver.driverId }}</td>
+        <td>{{ driver.name | uppercase }}</td>
+        <td>{{ driver.department | titlecase}}</td>
+        <td>{{ driver.licence }}</td>
+        <td>{{ driver.isActive ? "Active" : "Inactive" }}</td>
+        <td>{{ driver.createdAt | date }}</td>
+      </tr>
+    }
+  </tbody>
+</table>

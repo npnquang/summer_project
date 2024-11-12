@@ -1,0 +1,27 @@
+<div class="d-flex justify-content-center">
+  <div class="w-30">
+    <h1>Add new driver</h1>
+    <div>
+      <label for="name" class="form-label">Name:</label>
+      <input [(ngModel)]="driver.name" type="text" class="form-control mb-3" id="name" name="name" required>
+  
+      <label for="department" class="form-label">Department:</label>
+      <select [(ngModel)]="driver.department" id="department" class="form-select mb-3" name="department" required>
+          <option value="" disabled selected>Select an option</option>
+          <option value="food">Food</option>
+          <option value="furniture">Furniture</option>
+          <option value="electronic">Electronic</option>
+      </select>
+
+      <div class="form-check mb-3">
+        <label for="active" class="form-check-label">Active</label>
+        <input [(ngModel)]="driver.isActive" type="checkbox" class="form-check-input" id="active" name="isActive">
+      </div>
+  
+      <label for="licence" class="form-label">Licence:</label>
+      <input [(ngModel)]="driver.licence" type="text" class="form-control mb-3" id="licence" name="licence" required>
+  
+      <button (click)="addDriver()" class="btn btn-success">Add new driver</button>
+    </div>
+  </div>
+</div>

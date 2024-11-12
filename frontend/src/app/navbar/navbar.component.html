@@ -1,0 +1,70 @@
+<nav class="navbar navbar-expand-lg bg-black">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/"><img alt="logo" src="/logo.png"></a>
+    <button class="navbar-toggler bg-success" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-success" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Driver
+          </a>
+          <ul class="dropdown-menu bg-dark">
+            <li><a class="dropdown-item text-success" routerLink="/driver/add">Add</a></li>
+            <li><a class="dropdown-item text-success" routerLink="/driver/list">List</a></li>
+            <li><a class="dropdown-item text-success" routerLink="/driver/delete">Delete</a></li>
+            <li><a class="dropdown-item text-success" routerLink="/driver/update">Update</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-success" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Package
+          </a>
+          <ul class="dropdown-menu bg-dark">
+            <li><a class="dropdown-item text-success" routerLink="/package/add">Add</a></li>
+            <li><a class="dropdown-item text-success" routerLink="/package/list">List</a></li>
+            <li><a class="dropdown-item text-success" routerLink="/package/delete">Delete</a></li>
+            <li><a class="dropdown-item text-success" routerLink="/package/update">Update</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-success" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Cloud Actions
+          </a>
+          <ul class="dropdown-menu bg-dark">
+            <li><a class="dropdown-item text-success" routerLink="/text-to-speech">Licence: Text2Speech</a></li>
+            <li><a class="dropdown-item text-success" routerLink="/translate">Package Description: Translate</a></li>
+            <li><a class="dropdown-item text-success" routerLink="/distance">Get Distance</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link text-success" routerLink="/stats">
+            Stats
+          </a>
+        </li>
+      </ul>
+
+
+      @if (!login) {
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link text-success" routerLink="/login">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-success" routerLink="/register">Sign up</a>
+          </li>
+        </ul>
+      }
+
+      @else {
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link text-success" routerLink="/" (click)="logout()">Log out</a>
+          </li>
+        </ul>
+      }
+      
+    </div>
+  </div>
+</nav>

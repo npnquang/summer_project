@@ -1,0 +1,14 @@
+@if (distance < 0) {
+  <div class="d-flex justify-content-start mt-3 mb-3">
+    <h3>An error has occured, please try another distance</h3>
+    <button type="button" class="btn btn-danger btn-sm align-self-start ms-3" (click)="close()">x</button>
+  </div>
+}
+
+@else {
+  <div class="d-flex justify-content-start mt-3 mb-3">
+    <h3>Distance from {{ destination }} to Melbourne: {{ distance | number: '.3-3' }} km</h3>
+    <button type="button" class="btn btn-danger btn-sm align-self-start ms-3" (click)="close()">x</button>
+  </div>
+}
+

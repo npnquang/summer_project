@@ -1,0 +1,14 @@
+<div class="d-flex justify-content-center">
+  <div class="w-30">
+    <h1>Update Package</h1>
+    <div>
+      <label for="id" class="form-label">Package ID:</label>
+      <input [(ngModel)]="updateInfo.id" type="text" class="form-control mb-3" id="id" name="id" required>
+  
+      <label for="destination" class="form-label">Destination:</label>
+      <input [(ngModel)]="updateInfo.package_destination" type="text" class="form-control mb-3" id="destination" name="destination" required>
+  
+      <button (click)="updatePackage()" class="btn btn-success">Update package</button>
+    </div>
+  </div>
+</div>

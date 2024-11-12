@@ -1,0 +1,41 @@
+@if (packages.length === 0) {
+  <div class="d-flex justify-content-start mt-3 mb-3">
+    <h3>No package available</h3>
+    <button type="button" class="btn btn-danger btn-sm align-self-start ms-3" (click)="close()">x</button>
+  </div>
+}
+
+@else {
+  <div class="d-flex justify-content-start mt-3 mb-3">
+    <h3>Packages</h3>
+    <button type="button" class="btn btn-danger btn-sm align-self-start ms-3" (click)="close()" >x</button>
+  </div>
+  <table class="table table-responsive table-bordered border-success table-striped table-dark">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Package ID</th>
+        <th>Title</th>
+        <th>Weight</th>
+        <th>Destination</th>
+        <th>Description</th>
+        <th>Allocated</th>
+        <th>Date Created</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (package of packages; track package; let i = $index) {
+        <tr id="package._id">
+          <td>{{ package._id }}</td>
+          <td>{{ package.packageId }}</td>
+          <td>{{ package.title | uppercase }}</td>
+          <td>{{ package.weight * 1000 | number: '.2-2' }}g</td>
+          <td>{{ package.destination }}</td>
+          <td>{{ package.description }}</td>
+          <td>{{ package.isAllocated ? 'True' : 'False' }}</td>
+          <td>{{ package.createdAt | date}}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+}

@@ -1,0 +1,22 @@
+<div class="d-flex justify-content-center">
+  <div class="w-30">
+    <h1>Update driver</h1>
+    <div>
+      <label for="id" class="form-label">Driver ID:</label>
+      <input [(ngModel)]="updateInfo.id" type="text" class="form-control mb-3" id="id" name="id" required>
+  
+      <label for="department" class="form-label">Department:</label>
+      <select [(ngModel)]="updateInfo.driver_department" id="department" class="form-select mb-3" name="department" required>
+          <option value="" disabled selected>Select an option</option>
+          <option value="food">Food</option>
+          <option value="furniture">Furniture</option>
+          <option value="electronic">Electronic</option>
+      </select>
+  
+      <label for="licence" class="form-label">Licence:</label>
+      <input [(ngModel)]="updateInfo.driver_licence" type="text" class="form-control mb-3" id="licence" name="licence" required>
+  
+      <button (click)="updateDriver()" class="btn btn-success">Add new driver</button>
+    </div>
+  </div>
+</div>
